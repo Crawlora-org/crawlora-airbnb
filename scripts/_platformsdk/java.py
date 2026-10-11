@@ -141,7 +141,7 @@ def emit(root: Path, config: dict, spec: dict, assets: Path) -> None:
     values = {
         "platform": platform,
         "display_name": config["display_name"],
-        "java_description": f"{base_description} Includes all {model.operation_count} public API endpoints.",
+        "java_description": base_description,
         "seo_summary": public_api_summary(config),
         "endpoint_table": endpoint_table_from_spec(spec, platform),
         "package_name": package_name,

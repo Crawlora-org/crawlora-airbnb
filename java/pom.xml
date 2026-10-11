@@ -8,7 +8,7 @@
   <version>0.1.1</version>
   <packaging>jar</packaging>
   <name>Crawlora Airbnb Java Client</name>
-  <description>Java client for Crawlora's hosted Airbnb API, with listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requires a Crawlora API key. Includes all 7 public API endpoints.</description>
+  <description>Java client for Crawlora's hosted Airbnb API, with listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requires a Crawlora API key.</description>
   <url>https://crawlora.net/?utm_source=maven-central&amp;utm_medium=referral&amp;utm_campaign=platform-clients&amp;utm_content=airbnb-java-homepage</url>
   <licenses><license><name>MIT License</name><url>https://opensource.org/licenses/MIT</url><distribution>repo</distribution></license></licenses>
   <developers><developer><name>Crawlora</name><organization>Crawlora</organization><organizationUrl>https://crawlora.net/?utm_source=maven-central&amp;utm_medium=referral&amp;utm_campaign=platform-clients&amp;utm_content=airbnb-java-organization-homepage</organizationUrl></developer></developers>
