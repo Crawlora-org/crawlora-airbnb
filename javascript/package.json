@@ -1,6 +1,6 @@
 {
   "name": "@crawlora-org/airbnb",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Typed JavaScript client for the Crawlora Airbnb API",
   "homepage": "https://crawlora.net/?utm_source=npm&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-javascript-homepage",
   "bugs": { "url": "https://github.com/Crawlora-org/crawlora-airbnb/issues" },

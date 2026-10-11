@@ -26,7 +26,7 @@ final class Client
     private ?\Closure $transport;
 
     public const PLATFORM = 'airbnb';
-    public const VERSION = '0.1.0';
+    public const VERSION = '0.1.1';
     public const OPERATION_COUNT = 7;
     public const OPERATION_IDS = ["airbnb-host", "airbnb-host-listings", "airbnb-host-reviews", "airbnb-room", "airbnb-room-calendar", "airbnb-room-reviews", "airbnb-search"];
 
@@ -57,7 +57,7 @@ JSON, true, 512, JSON_THROW_ON_ERROR);
         $url = $this->buildUrl($operation, $params);
         $headers = [
             'x-api-key: ' . $this->apiKey,
-            'User-Agent: crawlora-airbnb-php/0.1.0',
+            'User-Agent: crawlora-airbnb-php/0.1.1',
             'Accept: ' . (in_array('text/plain', $operation['produces'], true) ? 'application/json, text/plain' : 'application/json'),
         ];
         if ($payload !== null) {

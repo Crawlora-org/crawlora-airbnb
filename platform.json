@@ -5,7 +5,7 @@
   "display_name": "Airbnb",
   "general_sdk_version": "1.46.0-sdk.1",
   "golang_module_name": "github.com/Crawlora-org/crawlora-airbnb",
-  "golang_version": "0.1.0",
+  "golang_version": "0.1.1",
   "group_name": "airbnb",
   "java_description": "Java client for Crawlora's hosted Airbnb API, with listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requires a Crawlora API key.",
   "maven_artifact_id": "crawlora-airbnb",
@@ -19,5 +19,14 @@
   "repository": "https://github.com/Crawlora-org/crawlora-airbnb",
   "ruby_gem_name": "crawlora-airbnb",
   "source_contract_sha256": "8f37412b34b49c443ff8c115dadaf9b6a2a82fd767af53137ce5e9f6b288ea20",
-  "version": "0.1.0"
+  "version": "0.1.1",
+  "releases": [
+    {
+      "version": "0.1.1",
+      "date": "2026-10-12",
+      "changes": [
+        "Publish npm releases through GitHub Actions with provenance."
+      ]
+    }
+  ]
 }
