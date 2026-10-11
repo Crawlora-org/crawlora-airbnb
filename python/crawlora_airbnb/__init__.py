@@ -6,7 +6,7 @@ from .operations import OPERATION_COUNT, OPERATION_IDS, PLATFORM
 
 Client = AirbnbClient
 AsyncClient = AsyncAirbnbClient
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 DISPLAY_NAME = 'Airbnb'
 PLATFORM = 'airbnb'
 CONTRACT_REVISION = 'sha256:61a1ad73fe479c52ca215e96b96cec162918a29a197668cc611c7d5309f97a6a'

@@ -2,7 +2,7 @@
 
 The `@crawlora-org/airbnb` and `crawlora-airbnb` packages call Crawlora's hosted API. Set `CRAWLORA_API_KEY` to a key for your Crawlora account before making requests. Service usage is billed under that account. These clients do not run a browser or scrape Airbnb locally; Crawlora is independent from and not endorsed by Airbnb or its owners.
 
-The package tracks the public API contract revision `sha256:61a1ad73fe479c52ca215e96b96cec162918a29a197668cc611c7d5309f97a6a` bundled with release `0.1.0`. Maintainers can preview daily contract updates with the repository's `Sync live API contract` workflow; unchanged contracts do not produce package releases.
+The package tracks the public API contract revision `sha256:61a1ad73fe479c52ca215e96b96cec162918a29a197668cc611c7d5309f97a6a` bundled with release `0.1.1`. Maintainers can preview daily contract updates with the repository's `Sync live API contract` workflow; unchanged contracts do not produce package releases.
 
 Both packages expose all 7 operations in the bundled API contract. JavaScript uses camelCase methods and Python uses snake_case methods. Methods also remain available through the `airbnb` group and the generated `Client` alias.
 

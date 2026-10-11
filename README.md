@@ -8,7 +8,7 @@ Official Crawlora client packages for the hosted Airbnb API. These clients call 
 - Python: [`crawlora-airbnb`](python/README.md)
 - Go: [`github.com/Crawlora-org/crawlora-airbnb`](go.mod)
 - Ruby: [`crawlora-airbnb`](ruby/README.md)
-- Java: [`net.crawlora:crawlora-airbnb:0.1.0`](java/README.md)
+- Java: [`net.crawlora:crawlora-airbnb:0.1.1`](java/README.md)
 - PHP: [`crawlora/airbnb`](php/README.md)
 
 For installation and runnable examples, use the README for your language. See the [API endpoint and parameter reference](docs/usage.md) for shared operation details.
