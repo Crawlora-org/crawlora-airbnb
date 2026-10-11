@@ -1,0 +1,1002 @@
+{
+  "basePath": "/api/v1",
+  "definitions": {
+    "airbnb.CalendarDay": {
+      "properties": {
+        "available": {
+          "type": "boolean"
+        },
+        "available_for_checkin": {
+          "type": "boolean"
+        },
+        "available_for_checkout": {
+          "type": "boolean"
+        },
+        "bookable": {
+          "type": "boolean"
+        },
+        "date": {
+          "example": "2026-07-01",
+          "type": "string"
+        },
+        "max_nights": {
+          "type": "integer"
+        },
+        "min_nights": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.CalendarMonth": {
+      "properties": {
+        "days": {
+          "items": {
+            "$ref": "#/definitions/airbnb.CalendarDay"
+          },
+          "type": "array"
+        },
+        "month": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.CalendarResponse": {
+      "properties": {
+        "id": {
+          "example": "12345678",
+          "type": "string"
+        },
+        "months": {
+          "items": {
+            "$ref": "#/definitions/airbnb.CalendarMonth"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.HostListing": {
+      "properties": {
+        "bathrooms": {
+          "type": "number"
+        },
+        "bedrooms": {
+          "type": "integer"
+        },
+        "beds": {
+          "type": "integer"
+        },
+        "id": {
+          "example": "44740639",
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "instant_book": {
+          "type": "boolean"
+        },
+        "is_luxury": {
+          "type": "boolean"
+        },
+        "is_new_listing": {
+          "type": "boolean"
+        },
+        "is_superhost": {
+          "type": "boolean"
+        },
+        "name": {
+          "type": "string"
+        },
+        "property_type": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "review_count": {
+          "type": "integer"
+        },
+        "room_category": {
+          "type": "string"
+        },
+        "room_type": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.HostListingsResponse": {
+      "properties": {
+        "has_more": {
+          "type": "boolean"
+        },
+        "id": {
+          "example": "65056940",
+          "type": "string"
+        },
+        "listings": {
+          "items": {
+            "$ref": "#/definitions/airbnb.HostListing"
+          },
+          "type": "array"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.HostResponse": {
+      "properties": {
+        "about": {
+          "type": "string"
+        },
+        "hosting_years": {
+          "example": 6,
+          "type": "integer"
+        },
+        "id": {
+          "example": "65056940",
+          "type": "string"
+        },
+        "identity_verified": {
+          "type": "boolean"
+        },
+        "image": {
+          "type": "string"
+        },
+        "interests": {
+          "example": [
+            "Architecture",
+            "Wine",
+            "Yoga"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "is_home_host": {
+          "type": "boolean"
+        },
+        "is_superhost": {
+          "type": "boolean"
+        },
+        "listing_count": {
+          "example": 3,
+          "type": "integer"
+        },
+        "location": {
+          "type": "string"
+        },
+        "member_years": {
+          "example": 10,
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "review_count": {
+          "example": 888,
+          "type": "integer"
+        },
+        "url": {
+          "type": "string"
+        },
+        "verifications": {
+          "example": [
+            "Identity",
+            "Email address",
+            "Phone number"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.HostReview": {
+      "properties": {
+        "comments": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "reviewer": {
+          "type": "string"
+        },
+        "reviewer_location": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.HostReviewsResponse": {
+      "properties": {
+        "has_more": {
+          "type": "boolean"
+        },
+        "id": {
+          "example": "65056940",
+          "type": "string"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "reviews": {
+          "items": {
+            "$ref": "#/definitions/airbnb.HostReview"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.ListingItem": {
+      "properties": {
+        "host": {
+          "type": "string"
+        },
+        "host_id": {
+          "example": "65056940",
+          "type": "string"
+        },
+        "id": {
+          "example": "12345678",
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "is_guest_favorite": {
+          "description": "IsGuestFavorite reports whether the listing carries an Airbnb Guest Favorite badge\n(including its \"top N%\" variants). Like IsSuperhost it comes from the search card's\nbadges[] and renders inconsistently, so a true value is reliable but a false/absent\nvalue is not — downstream aggregates treat the rate as an observed lower bound.",
+          "type": "boolean"
+        },
+        "is_superhost": {
+          "type": "boolean"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "location": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "price": {
+          "type": "number"
+        },
+        "price_per_night": {
+          "description": "PricePerNight is the per-night price for the queried stay (search total ÷ nights),\nset only when check_in+check_out are supplied. It amortizes any fixed fees across\nthe stay, so a longer window yields a tighter base-rate estimate. Without dates the\n`price` field is an unstable \"from\"/display figure, not a nightly rate.",
+          "example": 148,
+          "type": "number"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "review_count": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.ReviewItem": {
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "date": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.ReviewsResponse": {
+      "properties": {
+        "id": {
+          "example": "12345678",
+          "type": "string"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "reviews": {
+          "items": {
+            "$ref": "#/definitions/airbnb.ReviewItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.RoomResponse": {
+      "properties": {
+        "amenities": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "description": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "host_id": {
+          "example": "65056940",
+          "type": "string"
+        },
+        "id": {
+          "example": "12345678",
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        },
+        "is_guest_favorite": {
+          "description": "IsGuestFavorite reports whether the listing carries an Airbnb Guest Favorite badge\n(including its \"top N%\" variants). Like IsSuperhost it comes from the search card's\nbadges[] and renders inconsistently, so a true value is reliable but a false/absent\nvalue is not — downstream aggregates treat the rate as an observed lower bound.",
+          "type": "boolean"
+        },
+        "is_superhost": {
+          "type": "boolean"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "location": {
+          "type": "string"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "person_capacity": {
+          "description": "PersonCapacity is the max guests the listing sleeps and PropertyType is Airbnb's\ncanonical listing type (e.g. \"Entire guest suite\", \"Private room in rental unit\"),\nboth from the room detail page's StayEmbedData. PropertyType is authoritative, unlike\nthe search card's \"<type> in <place>\" descriptor. PDP-only (absent from /airbnb/search).",
+          "type": "integer"
+        },
+        "price": {
+          "type": "number"
+        },
+        "price_per_night": {
+          "description": "PricePerNight is the per-night price for the queried stay (search total ÷ nights),\nset only when check_in+check_out are supplied. It amortizes any fixed fees across\nthe stay, so a longer window yields a tighter base-rate estimate. Without dates the\n`price` field is an unstable \"from\"/display figure, not a nightly rate.",
+          "example": 148,
+          "type": "number"
+        },
+        "property_type": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number"
+        },
+        "review_count": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "airbnb.SearchResponse": {
+      "properties": {
+        "location": {
+          "example": "New York, NY",
+          "type": "string"
+        },
+        "page": {
+          "example": 1,
+          "type": "integer"
+        },
+        "results": {
+          "items": {
+            "$ref": "#/definitions/airbnb.ListingItem"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "app.Response": {
+      "description": "The Response struct is used for wrapping the API response with a code, message, and data.",
+      "properties": {
+        "code": {
+          "description": "Code is the HTTP status code or a custom code used to indicate the result of the request\n@example 200",
+          "type": "integer"
+        },
+        "data": {
+          "description": "Data is the response data (can be any object or null)\n@example {\"id\": 1, \"name\": \"John Doe\"}"
+        },
+        "msg": {
+          "description": "Msg is the message that describes the result of the request\n@example \"Request successful\""
+        }
+      },
+      "type": "object"
+    }
+  },
+  "host": "api.crawlora.net",
+  "info": {
+    "contact": {
+      "email": "support@crawlora.net",
+      "name": "API Support",
+      "url": "https://crawlora.net"
+    },
+    "description": "Crawlora is a hosted web-data and SERP API: call documented REST endpoints and get normalized JSON instead of HTML to parse — across search/SERP, maps and local, e-commerce, app stores, social, media and finance. One API key; Crawlora runs the proxy rotation, headless browsers and parsing behind the scenes. Billed pay-on-success: charged only on a successful 2xx response, 1-10 credits per call, with a free tier of 2,000 credits per month and no card. A hosted MCP server (mcp.crawlora.net/mcp) exposes the same catalog as agent tools. Search endpoints accept `q` as a universal alias for whichever search-term parameter they document (`query`, `term`, `keyword`, or Amazon's `k`), so one parameter name works across the whole catalog; an explicitly supplied documented name always wins.",
+    "license": {
+      "name": "Crawlora Terms of Service",
+      "url": "https://crawlora.net/terms"
+    },
+    "termsOfService": "https://crawlora.net/terms",
+    "title": "Crawlora API",
+    "version": "1.2",
+    "x-logo": {
+      "altText": "Crawlora",
+      "backgroundColor": "#FFFFFF",
+      "url": "https://raw.githubusercontent.com/Crawlora-org/crawlora-mcp/main/assets/logo-400x400.png"
+    }
+  },
+  "paths": {
+    "/airbnb/host/{id}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns a normalized Airbnb public host profile — display name, Superhost and identity-verification status, location, bio, hosting tenure, total guest-review count, and total listing count.",
+        "operationId": "airbnb-host",
+        "parameters": [
+          {
+            "description": "Host id (numeric)",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "65056940"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.HostResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Airbnb host profile",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    },
+    "/airbnb/host/{id}/listings": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns the listings an Airbnb host manages, paginated. Page 1 comes from the host profile; deeper pages page through the host's full portfolio.",
+        "operationId": "airbnb-host-listings",
+        "parameters": [
+          {
+            "description": "Host id (numeric)",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "65056940"
+          },
+          {
+            "description": "1-based page",
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.HostListingsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Airbnb host listings",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    },
+    "/airbnb/host/{id}/reviews": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns reviews guests left for an Airbnb host, paginated, including the reviewer name and location.",
+        "operationId": "airbnb-host-reviews",
+        "parameters": [
+          {
+            "description": "Host id (numeric)",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "65056940"
+          },
+          {
+            "description": "1-based page",
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.HostReviewsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Airbnb host reviews",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    },
+    "/airbnb/room/{id}": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns normalized Airbnb public room details.",
+        "operationId": "airbnb-room",
+        "parameters": [
+          {
+            "description": "Room id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "1384733959726184048"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.RoomResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Airbnb room",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    },
+    "/airbnb/room/{id}/calendar": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns public calendar month hints parsed from Airbnb room bootstrap data.",
+        "operationId": "airbnb-room-calendar",
+        "parameters": [
+          {
+            "description": "Room id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "1384733959726184048"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.CalendarResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Airbnb room calendar",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    },
+    "/airbnb/room/{id}/reviews": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns normalized Airbnb public review snippets.",
+        "operationId": "airbnb-room-reviews",
+        "parameters": [
+          {
+            "description": "Room id",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "type": "string",
+            "x-example": "1384733959726184048"
+          },
+          {
+            "description": "1-based page",
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.ReviewsResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Get Airbnb room reviews",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    },
+    "/airbnb/search": {
+      "get": {
+        "consumes": [
+          "application/json"
+        ],
+        "description": "Returns normalized Airbnb public web search results.",
+        "operationId": "airbnb-search",
+        "parameters": [
+          {
+            "description": "Location",
+            "in": "query",
+            "name": "location",
+            "required": true,
+            "type": "string",
+            "x-example": "New York, NY"
+          },
+          {
+            "description": "Check-in date",
+            "in": "query",
+            "name": "check_in",
+            "type": "string"
+          },
+          {
+            "description": "Check-out date",
+            "in": "query",
+            "name": "check_out",
+            "type": "string"
+          },
+          {
+            "description": "Adult guests",
+            "in": "query",
+            "name": "adults",
+            "type": "integer"
+          },
+          {
+            "description": "1-based page",
+            "in": "query",
+            "name": "page",
+            "type": "integer"
+          },
+          {
+            "description": "Currency for bounded map search",
+            "in": "query",
+            "name": "currency",
+            "type": "string"
+          },
+          {
+            "description": "Northeast latitude for bounded map search",
+            "in": "query",
+            "name": "ne_lat",
+            "type": "number"
+          },
+          {
+            "description": "Northeast longitude for bounded map search",
+            "in": "query",
+            "name": "ne_lng",
+            "type": "number"
+          },
+          {
+            "description": "Southwest latitude for bounded map search",
+            "in": "query",
+            "name": "sw_lat",
+            "type": "number"
+          },
+          {
+            "description": "Southwest longitude for bounded map search",
+            "in": "query",
+            "name": "sw_lng",
+            "type": "number"
+          },
+          {
+            "description": "Map zoom for bounded map search",
+            "in": "query",
+            "name": "zoom",
+            "type": "integer"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/airbnb.SearchResponse"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          },
+          "503": {
+            "description": "Service Unavailable",
+            "schema": {
+              "$ref": "#/definitions/app.Response"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKeyAuth": []
+          }
+        ],
+        "summary": "Search Airbnb stays",
+        "tags": [
+          "airbnb"
+        ]
+      }
+    }
+  },
+  "schemes": [
+    "https"
+  ],
+  "securityDefinitions": {
+    "ApiKeyAuth": {
+      "in": "header",
+      "name": "x-api-key",
+      "type": "apiKey"
+    }
+  },
+  "swagger": "2.0",
+  "tags": [
+    {
+      "name": "airbnb"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "async_class_name": "AsyncAirbnbClient",
+  "class_name": "AirbnbClient",
+  "contract_revision": "sha256:61a1ad73fe479c52ca215e96b96cec162918a29a197668cc611c7d5309f97a6a",
+  "display_name": "Airbnb",
+  "general_sdk_version": "1.46.0-sdk.1",
+  "golang_module_name": "github.com/Crawlora-org/crawlora-airbnb",
+  "golang_version": "0.1.0",
+  "group_name": "airbnb",
+  "java_description": "Java client for Crawlora's hosted Airbnb API, with listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requires a Crawlora API key.",
+  "maven_artifact_id": "crawlora-airbnb",
+  "maven_group_id": "net.crawlora",
+  "module_name": "crawlora_airbnb",
+  "npm_name": "@crawlora-org/airbnb",
+  "php_package_name": "crawlora/airbnb",
+  "php_repository": "https://github.com/Crawlora-org/crawlora-airbnb",
+  "platform": "airbnb",
+  "python_name": "crawlora-airbnb",
+  "repository": "https://github.com/Crawlora-org/crawlora-airbnb",
+  "ruby_gem_name": "crawlora-airbnb",
+  "source_contract_sha256": "8f37412b34b49c443ff8c115dadaf9b6a2a82fd767af53137ce5e9f6b288ea20",
+  "version": "0.1.0"
+}

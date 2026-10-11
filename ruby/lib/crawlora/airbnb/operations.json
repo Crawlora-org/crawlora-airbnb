@@ -1,0 +1,364 @@
+{
+  "platform": "airbnb",
+  "operationCount": 7,
+  "operationIds": [
+    "airbnb-host",
+    "airbnb-host-listings",
+    "airbnb-host-reviews",
+    "airbnb-room",
+    "airbnb-room-calendar",
+    "airbnb-room-reviews",
+    "airbnb-search"
+  ],
+  "methods": {
+    "host": "airbnb-host",
+    "host_listings": "airbnb-host-listings",
+    "host_reviews": "airbnb-host-reviews",
+    "room": "airbnb-room",
+    "room_calendar": "airbnb-room-calendar",
+    "room_reviews": "airbnb-room-reviews",
+    "search": "airbnb-search"
+  },
+  "operations": {
+    "airbnb-host": {
+      "id": "airbnb-host",
+      "method": "GET",
+      "path": "/airbnb/host/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Host id (numeric)",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "65056940"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "airbnb-host-listings": {
+      "id": "airbnb-host-listings",
+      "method": "GET",
+      "path": "/airbnb/host/{id}/listings",
+      "pathParams": [
+        "id"
+      ],
+      "queryParams": [
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Host id (numeric)",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "65056940"
+        },
+        {
+          "description": "1-based page",
+          "in": "query",
+          "name": "page",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "airbnb-host-reviews": {
+      "id": "airbnb-host-reviews",
+      "method": "GET",
+      "path": "/airbnb/host/{id}/reviews",
+      "pathParams": [
+        "id"
+      ],
+      "queryParams": [
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Host id (numeric)",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "65056940"
+        },
+        {
+          "description": "1-based page",
+          "in": "query",
+          "name": "page",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "airbnb-room": {
+      "id": "airbnb-room",
+      "method": "GET",
+      "path": "/airbnb/room/{id}",
+      "pathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Room id",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "1384733959726184048"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "airbnb-room-calendar": {
+      "id": "airbnb-room-calendar",
+      "method": "GET",
+      "path": "/airbnb/room/{id}/calendar",
+      "pathParams": [
+        "id"
+      ],
+      "queryParams": [],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Room id",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "1384733959726184048"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "airbnb-room-reviews": {
+      "id": "airbnb-room-reviews",
+      "method": "GET",
+      "path": "/airbnb/room/{id}/reviews",
+      "pathParams": [
+        "id"
+      ],
+      "queryParams": [
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Room id",
+          "in": "path",
+          "name": "id",
+          "required": true,
+          "type": "string",
+          "x-example": "1384733959726184048"
+        },
+        {
+          "description": "1-based page",
+          "in": "query",
+          "name": "page",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    },
+    "airbnb-search": {
+      "id": "airbnb-search",
+      "method": "GET",
+      "path": "/airbnb/search",
+      "pathParams": [],
+      "queryParams": [
+        {
+          "name": "location",
+          "in": "query",
+          "type": "string",
+          "required": true
+        },
+        {
+          "name": "check_in",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "check_out",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "adults",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "type": "integer"
+        },
+        {
+          "name": "currency",
+          "in": "query",
+          "type": "string"
+        },
+        {
+          "name": "ne_lat",
+          "in": "query",
+          "type": "number"
+        },
+        {
+          "name": "ne_lng",
+          "in": "query",
+          "type": "number"
+        },
+        {
+          "name": "sw_lat",
+          "in": "query",
+          "type": "number"
+        },
+        {
+          "name": "sw_lng",
+          "in": "query",
+          "type": "number"
+        },
+        {
+          "name": "zoom",
+          "in": "query",
+          "type": "integer"
+        }
+      ],
+      "bodyParam": null,
+      "bodyRequired": false,
+      "params": [
+        {
+          "description": "Location",
+          "in": "query",
+          "name": "location",
+          "required": true,
+          "type": "string",
+          "x-example": "New York, NY"
+        },
+        {
+          "description": "Check-in date",
+          "in": "query",
+          "name": "check_in",
+          "type": "string"
+        },
+        {
+          "description": "Check-out date",
+          "in": "query",
+          "name": "check_out",
+          "type": "string"
+        },
+        {
+          "description": "Adult guests",
+          "in": "query",
+          "name": "adults",
+          "type": "integer"
+        },
+        {
+          "description": "1-based page",
+          "in": "query",
+          "name": "page",
+          "type": "integer"
+        },
+        {
+          "description": "Currency for bounded map search",
+          "in": "query",
+          "name": "currency",
+          "type": "string"
+        },
+        {
+          "description": "Northeast latitude for bounded map search",
+          "in": "query",
+          "name": "ne_lat",
+          "type": "number"
+        },
+        {
+          "description": "Northeast longitude for bounded map search",
+          "in": "query",
+          "name": "ne_lng",
+          "type": "number"
+        },
+        {
+          "description": "Southwest latitude for bounded map search",
+          "in": "query",
+          "name": "sw_lat",
+          "type": "number"
+        },
+        {
+          "description": "Southwest longitude for bounded map search",
+          "in": "query",
+          "name": "sw_lng",
+          "type": "number"
+        },
+        {
+          "description": "Map zoom for bounded map search",
+          "in": "query",
+          "name": "zoom",
+          "type": "integer"
+        }
+      ],
+      "produces": [
+        "application/json"
+      ],
+      "security": [
+        "ApiKeyAuth"
+      ]
+    }
+  }
+}
