@@ -26,7 +26,12 @@ def _example_call(platform: str, model: Any) -> tuple[str, dict[str, Any]]:
     operation_ids = [item for item in model.meta if model.operations[item]["method"] == "GET"]
     if not operation_ids:
         raise ValueError("focused client needs at least one GET operation")
-    operation_id = next((item for item in operation_ids if item.endswith("-search")), operation_ids[0])
+    # Prefer the platform's own search over a sub-family search that lives under
+    # another path prefix (spotify-podcasts-search), which the generated tests reject.
+    operation_id = next(
+        (item for item in operation_ids if item == platform + "-search"),
+        next((item for item in operation_ids if item.endswith("-search")), operation_ids[0]),
+    )
     preferred = {
         "sofascore": "Liverpool",
         "flashscore": "football",
@@ -127,6 +132,8 @@ def emit(root: Path, config: dict[str, Any], spec: dict[str, Any], assets: Path)
     package = Path(root) / "ruby"
     lib = package / "lib" / "crawlora" / platform
     lib.mkdir(parents=True, exist_ok=True)
+    from .documentation import endpoint_table_from_spec, public_api_summary
+
     template_root = Path(__file__).resolve().parent / "templates" / "ruby"
     values = {
         "PLATFORM": platform,
@@ -141,6 +148,8 @@ def emit(root: Path, config: dict[str, Any], spec: dict[str, Any], assets: Path)
         "OPERATION_JSON": json.dumps(operations, ensure_ascii=False, sort_keys=True),
         "OPERATION_IDS_JSON": json.dumps(sorted(operations)),
         "OPERATION_COUNT": str(len(operations)),
+        "SEO_SUMMARY": public_api_summary(config),
+        "ENDPOINT_TABLE": endpoint_table_from_spec(spec, platform),
         "DEPENDENCIES": dependency_lines,
         "DIRECT_METHODS": "\n".join(
             f"      define_method({method!r}) do |**params|\n"

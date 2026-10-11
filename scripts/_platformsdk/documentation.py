@@ -115,6 +115,72 @@ def _operation_catalog(operations: list[dict[str, Any]]) -> str:
     return "\n".join(rows)
 
 
+def public_api_summary(config: dict[str, Any]) -> str:
+    """Return the curated endpoint-area phrase used by package landing pages."""
+    description = str(config.get("java_description") or "")
+    marker = " API, with "
+    if marker in description:
+        summary = description.split(marker, 1)[1]
+        summary = summary.split(". Requires a Crawlora API key.", 1)[0]
+        if summary.strip():
+            return summary.strip().rstrip(".")
+    display = str(config.get("display_name") or config.get("platform") or "platform")
+    return f"the supported {display} API endpoints"
+
+
+def seo_keywords(config: dict[str, Any]) -> list[str]:
+    """Build concise registry search keywords from curated platform coverage."""
+    platform = str(config.get("platform") or "platform").lower()
+    display = str(config.get("display_name") or platform).lower()
+    keywords = ["crawlora", "api-client", "web-scraping", platform]
+    display_keyword = re.sub(r"[^a-z0-9]+", "-", display).strip("-")
+    if display_keyword and display_keyword not in keywords:
+        keywords.append(display_keyword)
+    ignored = {"and", "for", "from", "the", "with", "plus", "of", "to", "by", "a", "an", "api"}
+    summary = public_api_summary(config)
+    for area in re.split(r"[,;]", summary):
+        words = [word for word in re.findall(r"[a-z0-9]+", area.lower()) if word not in ignored]
+        if words:
+            keyword = "-".join(words)
+            if keyword not in keywords:
+                keywords.append(keyword)
+    return keywords[:20]
+
+
+def _endpoint_table(operations: list[dict[str, Any]]) -> str:
+    rows = ["| Method | Endpoint | API operation | Description |", "| --- | --- | --- | --- |"]
+    for operation in sorted(operations, key=lambda op: (str(op["path"]).casefold(), str(op["verb"]))):
+        summary = str(operation.get("summary") or operation.get("id") or "").split("\n", 1)[0]
+        summary = summary.replace("|", "\\|").replace("`", "\\`").replace("\r", " ")
+        rows.append(
+            f"| `{operation['verb']}` | `{operation['path']}` | `{operation['id']}` | {summary} |"
+        )
+    return "\n".join(rows)
+
+
+def endpoint_table_from_spec(spec: dict[str, Any], platform: str) -> str:
+    """Render the complete, parameter-free endpoint list for package READMEs."""
+    operations: list[dict[str, str]] = []
+    for path, path_item in (spec.get("paths") or {}).items():
+        if not isinstance(path_item, dict):
+            continue
+        for verb, operation in path_item.items():
+            if verb.lower() not in _METHODS or not isinstance(operation, dict):
+                continue
+            operation_id = str(operation.get("operationId") or "")
+            tags = [str(tag).strip().lower() for tag in operation.get("tags", [])]
+            belongs = platform.lower() in tags or operation_id.lower().startswith(platform.lower() + "-")
+            if not operation_id or not belongs:
+                continue
+            operations.append({
+                "verb": verb.upper(),
+                "path": str(path),
+                "id": operation_id,
+                "summary": str(operation.get("summary") or operation.get("description") or operation_id),
+            })
+    return _endpoint_table(operations)
+
+
 def _example_values(platform: str, operations: list[dict[str, Any]]) -> list[tuple[dict[str, Any], dict[str, Any]]]:
     """Choose useful calls using only methods and parameter names in this spec."""
     by_id = {op["id"].lower(): op for op in operations}
@@ -408,6 +474,9 @@ def _values(config: dict[str, Any], operations: list[dict[str, Any]]) -> dict[st
         "VERSION": version,
         "CONTRACT_REVISION": str(config.get("contract_revision") or version),
         "OPERATION_COUNT": str(len(operations)),
+        "SEO_SUMMARY": public_api_summary(config),
+        "SEO_KEYWORDS_JSON": json.dumps(seo_keywords(config), ensure_ascii=False),
+        "ENDPOINT_TABLE": _endpoint_table(operations),
         "OPERATION_CATALOG": catalog,
         "JS_EXAMPLE": js_example.rstrip(),
         "PYTHON_EXAMPLE": py_example.rstrip(),

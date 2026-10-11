@@ -1,6 +1,17 @@
 {
   "name": "crawlora/airbnb",
-  "description": "Airbnb client for the Crawlora hosted API",
+  "description": "Crawlora Airbnb API client with 7 endpoints for listing search, room details, calendars and reviews, and host profiles, listings and reviews",
+  "keywords": [
+    "crawlora",
+    "api-client",
+    "web-scraping",
+    "airbnb",
+    "listing-search",
+    "room-details",
+    "calendars-reviews",
+    "host-profiles",
+    "listings-reviews"
+  ],
   "type": "library",
   "license": "MIT",
   "require": {

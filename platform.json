@@ -25,7 +25,8 @@
       "version": "0.1.1",
       "date": "2026-10-12",
       "changes": [
-        "Publish npm releases through GitHub Actions with provenance."
+        "Publish npm releases through GitHub Actions with provenance.",
+        "Expand API endpoint documentation and package metadata for discoverability."
       ]
     }
   ]

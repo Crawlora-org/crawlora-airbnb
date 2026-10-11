@@ -1,6 +1,6 @@
-# Crawlora Airbnb Java Client
+# Crawlora Airbnb API client for Java
 
-The official Java client for Crawlora's hosted Airbnb API. It calls Crawlora's hosted API with your `x-api-key`; it does not connect to the upstream site directly.
+The official Java client for Crawlora's hosted Airbnb API. It exposes 7 endpoints covering listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requests use your `x-api-key`; the client does not connect to the upstream site directly.
 
 ## Install
 
@@ -30,6 +30,20 @@ try (Client client = new Client(System.getenv("CRAWLORA_API_KEY"))) {
 Each operation has a direct method that accepts the parameters documented for that endpoint. Use `client.request(operationId, params)` for generic dispatch. `Client.OPERATION_IDS`, `Client.OPERATION_COUNT`, `client.getOperationIds()`, and `client.getOperationCount()` describe this platform's operations only.
 
 For custom hosted API routing and timeouts, use `new Client(apiKey, baseUrl, Duration.ofSeconds(20))`. Text responses are returned as `String`; JSON responses are parsed into Java maps, lists, and scalar values.
+
+## Supported Airbnb API endpoints
+
+Browse every route included in this Java package. The [endpoint reference](https://github.com/Crawlora-org/crawlora-airbnb/blob/main/docs/usage.md) also lists parameters and response details.
+
+| Method | Endpoint | API operation | Description |
+| --- | --- | --- | --- |
+| `GET` | `/airbnb/host/{id}` | `airbnb-host` | Get Airbnb host profile |
+| `GET` | `/airbnb/host/{id}/listings` | `airbnb-host-listings` | Get Airbnb host listings |
+| `GET` | `/airbnb/host/{id}/reviews` | `airbnb-host-reviews` | Get Airbnb host reviews |
+| `GET` | `/airbnb/room/{id}` | `airbnb-room` | Get Airbnb room |
+| `GET` | `/airbnb/room/{id}/calendar` | `airbnb-room-calendar` | Get Airbnb room calendar |
+| `GET` | `/airbnb/room/{id}/reviews` | `airbnb-room-reviews` | Get Airbnb room reviews |
+| `GET` | `/airbnb/search` | `airbnb-search` | Search Airbnb stays |
 
 ## Links
 
