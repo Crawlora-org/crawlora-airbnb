@@ -1,7 +1,6 @@
-# crawlora-airbnb
+# crawlora-airbnb — Airbnb API client for Python
 
-Python client for Crawlora's hosted Airbnb API. It calls Crawlora's
-service at [Crawlora](https://crawlora.net/?utm_source=pypi&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-python-homepage); it does not run a browser or scrape
+Python client for Crawlora's hosted Airbnb API. It exposes 7 API endpoints covering listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requests go to [Crawlora](https://crawlora.net/?utm_source=pypi&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-python-homepage); the package does not run a browser or scrape
 Airbnb locally. A Crawlora account and `CRAWLORA_API_KEY` are required,
 and API use is billed under your Crawlora account. Crawlora is independent from and not endorsed by
 Airbnb or its owners.
@@ -67,6 +66,20 @@ asyncio.run(main())
 ```
 
 See the [runnable example](https://github.com/Crawlora-org/crawlora-airbnb/blob/main/examples/python.py) for a complete usage example.
+
+## Supported Airbnb API endpoints
+
+This package exposes every route below through direct snake_case methods and the `airbnb` group. See the [endpoint and parameter reference](https://github.com/Crawlora-org/crawlora-airbnb/blob/main/docs/usage.md) for complete input details.
+
+| Method | Endpoint | API operation | Description |
+| --- | --- | --- | --- |
+| `GET` | `/airbnb/host/{id}` | `airbnb-host` | Get Airbnb host profile |
+| `GET` | `/airbnb/host/{id}/listings` | `airbnb-host-listings` | Get Airbnb host listings |
+| `GET` | `/airbnb/host/{id}/reviews` | `airbnb-host-reviews` | Get Airbnb host reviews |
+| `GET` | `/airbnb/room/{id}` | `airbnb-room` | Get Airbnb room |
+| `GET` | `/airbnb/room/{id}/calendar` | `airbnb-room-calendar` | Get Airbnb room calendar |
+| `GET` | `/airbnb/room/{id}/reviews` | `airbnb-room-reviews` | Get Airbnb room reviews |
+| `GET` | `/airbnb/search` | `airbnb-search` | Search Airbnb stays |
 
 ## Configuration
 

@@ -1,6 +1,6 @@
-# Crawlora Airbnb Ruby client
+# Crawlora Airbnb API client for Ruby (`crawlora-airbnb`)
 
-This gem calls the Crawlora hosted API at `https://api.crawlora.net/api/v1`. It does not call or scrape Airbnb directly. Requests require your Crawlora API key and use your account's service plan.
+This Ruby gem calls Crawlora's hosted Airbnb API at `https://api.crawlora.net/api/v1`. It exposes 7 endpoints covering listing search, room details, calendars and reviews, and host profiles, listings and reviews; it does not call or scrape Airbnb directly. Requests require your Crawlora API key and use your account's service plan.
 
 ## Install
 
@@ -29,5 +29,19 @@ client.close
 ```
 
 Client options include `api_key`, `base_url`, and `timeout`. Ruby stdlib provides the HTTP and JSON support.
+
+## Supported Airbnb API endpoints
+
+Browse every route included in this gem. The [endpoint reference](https://github.com/Crawlora-org/crawlora-airbnb/blob/main/docs/usage.md) includes parameter and response details.
+
+| Method | Endpoint | API operation | Description |
+| --- | --- | --- | --- |
+| `GET` | `/airbnb/host/{id}` | `airbnb-host` | Get Airbnb host profile |
+| `GET` | `/airbnb/host/{id}/listings` | `airbnb-host-listings` | Get Airbnb host listings |
+| `GET` | `/airbnb/host/{id}/reviews` | `airbnb-host-reviews` | Get Airbnb host reviews |
+| `GET` | `/airbnb/room/{id}` | `airbnb-room` | Get Airbnb room |
+| `GET` | `/airbnb/room/{id}/calendar` | `airbnb-room-calendar` | Get Airbnb room calendar |
+| `GET` | `/airbnb/room/{id}/reviews` | `airbnb-room-reviews` | Get Airbnb room reviews |
+| `GET` | `/airbnb/search` | `airbnb-search` | Search Airbnb stays |
 
 See [Crawlora](https://crawlora.net/?utm_source=rubygems&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-ruby-homepage), the [API documentation](https://crawlora.net/docs?utm_source=rubygems&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-ruby-api-docs), and [the package repository](https://github.com/Crawlora-org/crawlora-airbnb) for account setup, the API operation reference, and release history.

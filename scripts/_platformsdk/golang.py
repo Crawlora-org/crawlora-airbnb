@@ -156,6 +156,8 @@ def emit(root: Path, config: dict, spec: dict, assets: Path) -> None:
     }
     if not get_meta:
         raise ValueError("the sliced specification contains no GET operations")
+    from .documentation import public_api_summary
+
     values = {
         "platform": platform,
         "package_name": package_name,
@@ -165,6 +167,7 @@ def emit(root: Path, config: dict, spec: dict, assets: Path) -> None:
         "repository": str(config.get("repository", f"https://github.com/Crawlora-org/crawlora-{platform}")),
         "docs_url": crawlora_url(source="pkg.go.dev", platform=platform, surface="go", destination="api-docs", path="/docs"),
         "operation_count": str(model.operation_count),
+        "seo_summary": public_api_summary(config),
         "user_agent": f"crawlora-{platform}-go/{version}",
         "version_json": _go_string(version),
         "user_agent_json": _go_string(f"crawlora-{platform}-go/{version}"),

@@ -1,4 +1,4 @@
-// Package airbnb is a focused Go client for Crawlora's Airbnb endpoints.
+// Package airbnb is Crawlora's Airbnb API client for 7 endpoints, covering listing search, room details, calendars and reviews, and host profiles, listings and reviews.
 // API documentation: https://crawlora.net/docs?utm_source=pkg.go.dev&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-go-api-docs
 package airbnb
 

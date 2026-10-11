@@ -1,6 +1,6 @@
 # Airbnb clients for Crawlora
 
-Official Crawlora client packages for the hosted Airbnb API. These clients call Crawlora's hosted API; they do not scrape Airbnb locally. Requests use your Crawlora account and `CRAWLORA_API_KEY`; service usage follows your account billing plan. Crawlora is independent from and not affiliated with or endorsed by Airbnb or its owners.
+Official Crawlora client packages for the hosted Airbnb API. Access 7 API endpoints covering listing search, room details, calendars and reviews, and host profiles, listings and reviews from JavaScript/TypeScript, Python, Go, Ruby, Java, and PHP. These clients call Crawlora's hosted API; they do not scrape Airbnb locally. Requests use your Crawlora account and `CRAWLORA_API_KEY`; service usage follows your account billing plan. Crawlora is independent from and not affiliated with or endorsed by Airbnb or its owners.
 
 ## Language packages
 
@@ -15,9 +15,19 @@ For installation and runnable examples, use the README for your language. See th
 
 Create an account at [crawlora.net](https://crawlora.net/signup?utm_source=github&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-repository-signup), open the [Crawlora console](https://crawlora.net/app?utm_source=github&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-repository-console) to get an API key, or read the [API documentation](https://crawlora.net/docs?utm_source=github&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-repository-api-docs). Keep `CRAWLORA_API_KEY` out of source control.
 
-## API coverage
+## API coverage and supported endpoints
 
-The six clients provide access to 7 public API operations. See the [API reference](docs/usage.md) for supported operations, parameters, and response details.
+The six language clients provide access to all 7 selected public Airbnb API operations. Search or browse by endpoint path and operation ID below; the [complete API reference](docs/usage.md) adds parameters, enums, and response details.
+
+| Method | Endpoint | API operation | Description |
+| --- | --- | --- | --- |
+| `GET` | `/airbnb/host/{id}` | `airbnb-host` | Get Airbnb host profile |
+| `GET` | `/airbnb/host/{id}/listings` | `airbnb-host-listings` | Get Airbnb host listings |
+| `GET` | `/airbnb/host/{id}/reviews` | `airbnb-host-reviews` | Get Airbnb host reviews |
+| `GET` | `/airbnb/room/{id}` | `airbnb-room` | Get Airbnb room |
+| `GET` | `/airbnb/room/{id}/calendar` | `airbnb-room-calendar` | Get Airbnb room calendar |
+| `GET` | `/airbnb/room/{id}/reviews` | `airbnb-room-reviews` | Get Airbnb room reviews |
+| `GET` | `/airbnb/search` | `airbnb-search` | Search Airbnb stays |
 
 ## License
 
