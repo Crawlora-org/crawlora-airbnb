@@ -122,6 +122,9 @@ def public_api_summary(config: dict[str, Any]) -> str:
     if marker in description:
         summary = description.split(marker, 1)[1]
         summary = summary.split(". Requires a Crawlora API key.", 1)[0]
+        # Older descriptions read "with [direct] methods for <areas>"; keep only
+        # the areas so sentences built around the summary stay grammatical.
+        summary = re.sub(r"^(?:direct )?methods for ", "", summary.strip())
         if summary.strip():
             return summary.strip().rstrip(".")
     display = str(config.get("display_name") or config.get("platform") or "platform")
@@ -129,22 +132,37 @@ def public_api_summary(config: dict[str, Any]) -> str:
 
 
 def seo_keywords(config: dict[str, Any]) -> list[str]:
-    """Build concise registry search keywords from curated platform coverage."""
+    """Build registry search keywords from the platform name and curated coverage.
+
+    Registry search matches keywords literally, so every coverage area is
+    qualified with the platform ("tiktok-comments", not "comments") and the
+    platform also gets the "-api", "-scraper" and "-data" forms people type.
+    """
     platform = str(config.get("platform") or "platform").lower()
     display = str(config.get("display_name") or platform).lower()
-    keywords = ["crawlora", "api-client", "web-scraping", platform]
     display_keyword = re.sub(r"[^a-z0-9]+", "-", display).strip("-")
-    if display_keyword and display_keyword not in keywords:
-        keywords.append(display_keyword)
-    ignored = {"and", "for", "from", "the", "with", "plus", "of", "to", "by", "a", "an", "api"}
+    names = [platform]
+    if display_keyword and display_keyword != platform:
+        names.append(display_keyword)
+
+    keywords = ["crawlora", "api-client", "sdk", "web-scraping", "scraping-api", *names]
+    for suffix in ("api", "scraper", "data"):
+        keywords.extend(f"{name}-{suffix}" for name in names)
+
+    ignored = {
+        "and", "for", "from", "the", "with", "of", "to", "by", "a", "an", "api", "direct", "methods", "method",
+    }
     summary = public_api_summary(config)
-    for area in re.split(r"[,;]", summary):
-        words = [word for word in re.findall(r"[a-z0-9]+", area.lower()) if word not in ignored]
-        if words:
-            keyword = "-".join(words)
-            if keyword not in keywords:
-                keywords.append(keyword)
-    return keywords[:20]
+    for area in re.split(r"[,;]|\bplus\b", summary.lower()):
+        words = [word for word in re.findall(r"[a-z0-9]+", area) if word not in ignored]
+        if not words or len(words) > 3:
+            continue
+        if platform not in words:
+            words.insert(0, platform)
+        keyword = "-".join(words)
+        if keyword not in keywords:
+            keywords.append(keyword)
+    return list(dict.fromkeys(keywords))[:20]
 
 
 def _endpoint_table(operations: list[dict[str, Any]]) -> str:
