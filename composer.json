@@ -4,13 +4,18 @@
   "keywords": [
     "crawlora",
     "api-client",
+    "sdk",
     "web-scraping",
+    "scraping-api",
     "airbnb",
-    "listing-search",
-    "room-details",
-    "calendars-reviews",
-    "host-profiles",
-    "listings-reviews"
+    "airbnb-api",
+    "airbnb-scraper",
+    "airbnb-data",
+    "airbnb-listing-search",
+    "airbnb-room-details",
+    "airbnb-calendars-reviews",
+    "airbnb-host-profiles",
+    "airbnb-listings-reviews"
   ],
   "type": "library",
   "license": "MIT",

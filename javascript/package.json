@@ -4,7 +4,7 @@
   "description": "Crawlora Airbnb API client with 7 endpoints for listing search, room details, calendars and reviews, and host profiles, listings and reviews",
   "homepage": "https://crawlora.net/?utm_source=npm&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-javascript-homepage",
   "bugs": { "url": "https://github.com/Crawlora-org/crawlora-airbnb/issues" },
-  "keywords": ["crawlora", "api-client", "web-scraping", "airbnb", "listing-search", "room-details", "calendars-reviews", "host-profiles", "listings-reviews"],
+  "keywords": ["crawlora", "api-client", "sdk", "web-scraping", "scraping-api", "airbnb", "airbnb-api", "airbnb-scraper", "airbnb-data", "airbnb-listing-search", "airbnb-room-details", "airbnb-calendars-reviews", "airbnb-host-profiles", "airbnb-listings-reviews"],
   "type": "module",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
