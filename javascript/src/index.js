@@ -9,7 +9,7 @@ import {
 
 export class AirbnbClient extends CrawloraClient {
   constructor(options = {}) {
-    super({ ...options, userAgent: options.userAgent ?? "crawlora-airbnb-js/0.1.1" });
+    super({ ...options, userAgent: options.userAgent ?? "crawlora-airbnb-js/0.1.2" });
     this["host"] = (...args) => this.request("airbnb-host", ...args);
     this["hostListings"] = (...args) => this.request("airbnb-host-listings", ...args);
     this["hostReviews"] = (...args) => this.request("airbnb-host-reviews", ...args);
@@ -29,5 +29,5 @@ export {
   CrawloraServerError
 };
 export { groups, operations, operationCount, OperationIds } from "./operations.js";
-export const VERSION = "0.1.1";
+export const VERSION = "0.1.2";
 export default AirbnbClient;

@@ -1,6 +1,6 @@
 {
   "name": "@crawlora-org/airbnb",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Crawlora Airbnb API client with 7 endpoints for listing search, room details, calendars and reviews, and host profiles, listings and reviews",
   "homepage": "https://crawlora.net/?utm_source=npm&utm_medium=referral&utm_campaign=platform-clients&utm_content=airbnb-javascript-homepage",
   "bugs": { "url": "https://github.com/Crawlora-org/crawlora-airbnb/issues" },

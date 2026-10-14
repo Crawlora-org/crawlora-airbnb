@@ -1,11 +1,11 @@
 {
   "async_class_name": "AsyncAirbnbClient",
   "class_name": "AirbnbClient",
-  "contract_revision": "sha256:61a1ad73fe479c52ca215e96b96cec162918a29a197668cc611c7d5309f97a6a",
+  "contract_revision": "sha256:87210a3d0e9a34255a495ce152452e7f72300ed84e8c573ffd615b5ac335a93b",
   "display_name": "Airbnb",
   "general_sdk_version": "1.46.0-sdk.1",
   "golang_module_name": "github.com/Crawlora-org/crawlora-airbnb",
-  "golang_version": "0.1.1",
+  "golang_version": "0.1.2",
   "group_name": "airbnb",
   "java_description": "Java client for Crawlora's hosted Airbnb API, with listing search, room details, calendars and reviews, and host profiles, listings and reviews. Requires a Crawlora API key.",
   "maven_artifact_id": "crawlora-airbnb",
@@ -16,18 +16,25 @@
   "php_repository": "https://github.com/Crawlora-org/crawlora-airbnb",
   "platform": "airbnb",
   "python_name": "crawlora-airbnb",
-  "repository": "https://github.com/Crawlora-org/crawlora-airbnb",
-  "ruby_gem_name": "crawlora-airbnb",
-  "source_contract_sha256": "8f37412b34b49c443ff8c115dadaf9b6a2a82fd767af53137ce5e9f6b288ea20",
-  "version": "0.1.1",
   "releases": [
     {
-      "version": "0.1.1",
-      "date": "2026-10-12",
+      "changes": [
+        "Updated operation contracts: airbnb-host, airbnb-host-listings, airbnb-host-reviews, airbnb-room, airbnb-room-calendar, airbnb-room-reviews, airbnb-search."
+      ],
+      "date": "2026-10-14",
+      "version": "0.1.2"
+    },
+    {
       "changes": [
         "Publish npm releases through GitHub Actions with provenance.",
         "Expand API endpoint documentation and package metadata for discoverability."
-      ]
+      ],
+      "date": "2026-10-12",
+      "version": "0.1.1"
     }
-  ]
+  ],
+  "repository": "https://github.com/Crawlora-org/crawlora-airbnb",
+  "ruby_gem_name": "crawlora-airbnb",
+  "source_contract_sha256": "edf94a318d422a94556084a811322eca2f95fd990cb37ad55abc6475c46b633a",
+  "version": "0.1.2"
 }

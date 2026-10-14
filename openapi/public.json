@@ -4,25 +4,32 @@
     "airbnb.CalendarDay": {
       "properties": {
         "available": {
+          "description": "True when the night is free.",
           "type": "boolean"
         },
         "available_for_checkin": {
+          "description": "True when a stay can start on this day.",
           "type": "boolean"
         },
         "available_for_checkout": {
+          "description": "True when a stay can end on this day.",
           "type": "boolean"
         },
         "bookable": {
+          "description": "True when the day can be booked.",
           "type": "boolean"
         },
         "date": {
+          "description": "Calendar date (YYYY-MM-DD).",
           "example": "2026-07-01",
           "type": "string"
         },
         "max_nights": {
+          "description": "Maximum stay, in nights, for a booking that starts on this day.",
           "type": "integer"
         },
         "min_nights": {
+          "description": "Minimum stay, in nights, for a booking that starts on this day.",
           "type": "integer"
         }
       },
@@ -31,15 +38,18 @@
     "airbnb.CalendarMonth": {
       "properties": {
         "days": {
+          "description": "One entry per day of the month.",
           "items": {
             "$ref": "#/definitions/airbnb.CalendarDay"
           },
           "type": "array"
         },
         "month": {
+          "description": "Month, as a number from 1 to 12 or a month name.",
           "type": "string"
         },
         "year": {
+          "description": "Four-digit year.",
           "type": "integer"
         }
       },
@@ -48,10 +58,12 @@
     "airbnb.CalendarResponse": {
       "properties": {
         "id": {
+          "description": "Airbnb room id the calendar belongs to.",
           "example": "12345678",
           "type": "string"
         },
         "months": {
+          "description": "Availability by month.",
           "items": {
             "$ref": "#/definitions/airbnb.CalendarMonth"
           },
@@ -63,49 +75,64 @@
     "airbnb.HostListing": {
       "properties": {
         "bathrooms": {
+          "description": "Number of bathrooms.",
           "type": "number"
         },
         "bedrooms": {
+          "description": "Number of bedrooms.",
           "type": "integer"
         },
         "beds": {
+          "description": "Number of beds.",
           "type": "integer"
         },
         "id": {
+          "description": "Airbnb listing (room) id. Use it with the room endpoints.",
           "example": "44740639",
           "type": "string"
         },
         "image": {
+          "description": "URL of the listing's main photo.",
           "type": "string"
         },
         "instant_book": {
+          "description": "True when guests can book the listing instantly without host approval.",
           "type": "boolean"
         },
         "is_luxury": {
+          "description": "True when Airbnb marks the listing as a luxury listing.",
           "type": "boolean"
         },
         "is_new_listing": {
+          "description": "True when Airbnb marks the listing as new.",
           "type": "boolean"
         },
         "is_superhost": {
+          "description": "True when the host carries the Superhost badge.",
           "type": "boolean"
         },
         "name": {
+          "description": "Listing title as shown on the host's profile.",
           "type": "string"
         },
         "property_type": {
+          "description": "Property type as Airbnb labels it, for example `Apartment`.",
           "type": "string"
         },
         "rating": {
+          "description": "Average guest rating.",
           "type": "number"
         },
         "review_count": {
+          "description": "Number of guest reviews.",
           "type": "integer"
         },
         "room_category": {
+          "description": "Airbnb room category of the listing, for example `entire_home`.",
           "type": "string"
         },
         "room_type": {
+          "description": "Room type as Airbnb labels it, for example `Serviced apartment`.",
           "type": "string"
         }
       },
@@ -114,19 +141,23 @@
     "airbnb.HostListingsResponse": {
       "properties": {
         "has_more": {
+          "description": "True when further pages of listings are available.",
           "type": "boolean"
         },
         "id": {
+          "description": "Airbnb host id the listings belong to.",
           "example": "65056940",
           "type": "string"
         },
         "listings": {
+          "description": "Listings the host manages, one item per listing.",
           "items": {
             "$ref": "#/definitions/airbnb.HostListing"
           },
           "type": "array"
         },
         "page": {
+          "description": "Page number returned.",
           "example": 1,
           "type": "integer"
         }
@@ -136,23 +167,29 @@
     "airbnb.HostResponse": {
       "properties": {
         "about": {
+          "description": "Bio text from the host's profile.",
           "type": "string"
         },
         "hosting_years": {
+          "description": "Number of years the host has been hosting on Airbnb.",
           "example": 6,
           "type": "integer"
         },
         "id": {
+          "description": "Airbnb host (user) id.",
           "example": "65056940",
           "type": "string"
         },
         "identity_verified": {
+          "description": "True when the host's identity is verified on Airbnb.",
           "type": "boolean"
         },
         "image": {
+          "description": "URL of the host's profile photo.",
           "type": "string"
         },
         "interests": {
+          "description": "Interests the host lists on the profile.",
           "example": [
             "Architecture",
             "Wine",
@@ -164,33 +201,42 @@
           "type": "array"
         },
         "is_home_host": {
+          "description": "True when Airbnb marks the host as a home host.",
           "type": "boolean"
         },
         "is_superhost": {
+          "description": "True when the host carries the Superhost badge.",
           "type": "boolean"
         },
         "listing_count": {
+          "description": "Total number of listings the host has.",
           "example": 3,
           "type": "integer"
         },
         "location": {
+          "description": "Location the host gives on the profile.",
           "type": "string"
         },
         "member_years": {
+          "description": "Number of years the host has had an Airbnb account.",
           "example": 10,
           "type": "integer"
         },
         "name": {
+          "description": "Display name of the host.",
           "type": "string"
         },
         "review_count": {
+          "description": "Total number of guest reviews the host has received.",
           "example": 888,
           "type": "integer"
         },
         "url": {
+          "description": "Link to the host's public profile on Airbnb.",
           "type": "string"
         },
         "verifications": {
+          "description": "Verifications shown on the profile, for example `Identity` or `Email address`.",
           "example": [
             "Identity",
             "Email address",
@@ -207,21 +253,27 @@
     "airbnb.HostReview": {
       "properties": {
         "comments": {
+          "description": "Text of the review.",
           "type": "string"
         },
         "created_at": {
+          "description": "Time the review was posted, as Airbnb returns it (ISO 8601).",
           "type": "string"
         },
         "id": {
+          "description": "Airbnb review id.",
           "type": "string"
         },
         "rating": {
+          "description": "Rating the guest gave, out of 5.",
           "type": "number"
         },
         "reviewer": {
+          "description": "Name of the guest who wrote the review.",
           "type": "string"
         },
         "reviewer_location": {
+          "description": "Location the reviewer gives on their profile.",
           "type": "string"
         }
       },
@@ -230,17 +282,21 @@
     "airbnb.HostReviewsResponse": {
       "properties": {
         "has_more": {
+          "description": "True when further pages of reviews are available.",
           "type": "boolean"
         },
         "id": {
+          "description": "Airbnb host id the reviews are for.",
           "example": "65056940",
           "type": "string"
         },
         "page": {
+          "description": "Page number returned.",
           "example": 1,
           "type": "integer"
         },
         "reviews": {
+          "description": "Reviews guests left for the host, one item per review.",
           "items": {
             "$ref": "#/definitions/airbnb.HostReview"
           },
@@ -252,17 +308,21 @@
     "airbnb.ListingItem": {
       "properties": {
         "host": {
+          "description": "Host name, when the search card shows it.",
           "type": "string"
         },
         "host_id": {
+          "description": "Airbnb id of the host. Use it with the host endpoint.",
           "example": "65056940",
           "type": "string"
         },
         "id": {
+          "description": "Airbnb listing (room) id. Use it with the room endpoints.",
           "example": "12345678",
           "type": "string"
         },
         "image": {
+          "description": "URL of the listing's main photo.",
           "type": "string"
         },
         "is_guest_favorite": {
@@ -270,18 +330,23 @@
           "type": "boolean"
         },
         "is_superhost": {
+          "description": "True when the listing carries the Superhost badge.",
           "type": "boolean"
         },
         "latitude": {
+          "description": "Latitude of the listing.",
           "type": "number"
         },
         "location": {
+          "description": "Location text shown for the listing.",
           "type": "string"
         },
         "longitude": {
+          "description": "Longitude of the listing.",
           "type": "number"
         },
         "price": {
+          "description": "Price shown on the search card. With check-in and check-out dates it is the total for the stay; without dates it is Airbnb's display figure, not a nightly rate.",
           "type": "number"
         },
         "price_per_night": {
@@ -290,15 +355,19 @@
           "type": "number"
         },
         "rating": {
+          "description": "Average guest rating.",
           "type": "number"
         },
         "review_count": {
+          "description": "Number of guest reviews.",
           "type": "integer"
         },
         "title": {
+          "description": "Listing title as shown on the search card.",
           "type": "string"
         },
         "url": {
+          "description": "Link to the listing on Airbnb.",
           "type": "string"
         }
       },
@@ -307,15 +376,19 @@
     "airbnb.ReviewItem": {
       "properties": {
         "author": {
+          "description": "Name of the guest who wrote the review.",
           "type": "string"
         },
         "date": {
+          "description": "Date of the review as Airbnb shows it.",
           "type": "string"
         },
         "rating": {
+          "description": "Rating the guest gave, out of 5. Omitted when the review shows none.",
           "type": "number"
         },
         "text": {
+          "description": "Text of the review.",
           "type": "string"
         }
       },
@@ -324,14 +397,17 @@
     "airbnb.ReviewsResponse": {
       "properties": {
         "id": {
+          "description": "Airbnb listing (room) id the reviews are for.",
           "example": "12345678",
           "type": "string"
         },
         "page": {
+          "description": "Page number returned.",
           "example": 1,
           "type": "integer"
         },
         "reviews": {
+          "description": "Review snippets for the listing on this page.",
           "items": {
             "$ref": "#/definitions/airbnb.ReviewItem"
           },
@@ -343,26 +419,32 @@
     "airbnb.RoomResponse": {
       "properties": {
         "amenities": {
+          "description": "Names of the amenities the listing offers.",
           "items": {
             "type": "string"
           },
           "type": "array"
         },
         "description": {
+          "description": "Listing description text.",
           "type": "string"
         },
         "host": {
+          "description": "Host name, when the search card shows it.",
           "type": "string"
         },
         "host_id": {
+          "description": "Airbnb id of the host. Use it with the host endpoint.",
           "example": "65056940",
           "type": "string"
         },
         "id": {
+          "description": "Airbnb listing (room) id. Use it with the room endpoints.",
           "example": "12345678",
           "type": "string"
         },
         "image": {
+          "description": "URL of the listing's main photo.",
           "type": "string"
         },
         "is_guest_favorite": {
@@ -370,15 +452,19 @@
           "type": "boolean"
         },
         "is_superhost": {
+          "description": "True when the listing carries the Superhost badge.",
           "type": "boolean"
         },
         "latitude": {
+          "description": "Latitude of the listing.",
           "type": "number"
         },
         "location": {
+          "description": "Location text shown for the listing.",
           "type": "string"
         },
         "longitude": {
+          "description": "Longitude of the listing.",
           "type": "number"
         },
         "person_capacity": {
@@ -386,6 +472,7 @@
           "type": "integer"
         },
         "price": {
+          "description": "Price shown on the search card. With check-in and check-out dates it is the total for the stay; without dates it is Airbnb's display figure, not a nightly rate.",
           "type": "number"
         },
         "price_per_night": {
@@ -394,18 +481,23 @@
           "type": "number"
         },
         "property_type": {
+          "description": "Airbnb's listing type, for example `Entire guest suite` or `Private room in rental unit`.",
           "type": "string"
         },
         "rating": {
+          "description": "Average guest rating.",
           "type": "number"
         },
         "review_count": {
+          "description": "Number of guest reviews.",
           "type": "integer"
         },
         "title": {
+          "description": "Listing title as shown on the search card.",
           "type": "string"
         },
         "url": {
+          "description": "Link to the listing on Airbnb.",
           "type": "string"
         }
       },
@@ -414,14 +506,17 @@
     "airbnb.SearchResponse": {
       "properties": {
         "location": {
+          "description": "Location that was searched.",
           "example": "New York, NY",
           "type": "string"
         },
         "page": {
+          "description": "Page number returned.",
           "example": 1,
           "type": "integer"
         },
         "results": {
+          "description": "Listings on this page.",
           "items": {
             "$ref": "#/definitions/airbnb.ListingItem"
           },
@@ -474,7 +569,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns a normalized Airbnb public host profile — display name, Superhost and identity-verification status, location, bio, hosting tenure, total guest-review count, and total listing count.",
+        "description": "Returns an Airbnb public host profile — display name, Superhost and identity-verification status, location, bio, hosting tenure, total guest-review count, and total listing count.",
         "operationId": "airbnb-host",
         "parameters": [
           {
@@ -606,7 +701,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns reviews guests left for an Airbnb host, paginated, including the reviewer name and location.",
+        "description": "Returns the reviews guests left for an Airbnb host, identified by the numeric host `id`. `page` is 1-based (default 1). Each review has its `id`, `rating`, `comments`, `created_at`, `reviewer` name and `reviewer_location`, and `has_more` says whether another page follows.",
         "operationId": "airbnb-host-reviews",
         "parameters": [
           {
@@ -675,7 +770,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns normalized Airbnb public room details.",
+        "description": "Returns the public details of one Airbnb listing by room id: title, description, property type, location and coordinates, guest capacity, amenities, price and price per night, rating, review count, host, and the Superhost and Guest Favorite flags. Some fields are present only when Airbnb exposes them for the listing.",
         "operationId": "airbnb-room",
         "parameters": [
           {
@@ -738,7 +833,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns public calendar month hints parsed from Airbnb room bootstrap data.",
+        "description": "Returns the public availability calendar for one Airbnb room, grouped by month. Each day carries its date, whether it is available and bookable, whether it can be a check-in or check-out day, and the minimum and maximum nights. Months are returned only when Airbnb exposes them for the listing.",
         "operationId": "airbnb-room-calendar",
         "parameters": [
           {
@@ -801,7 +896,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns normalized Airbnb public review snippets.",
+        "description": "Returns public guest reviews for one Airbnb room by room id, one page at a time (`page` is 1-based). Each review has the author, date, rating and text. Reviews are returned only when Airbnb exposes them for the listing.",
         "operationId": "airbnb-room-reviews",
         "parameters": [
           {
@@ -870,7 +965,7 @@
         "consumes": [
           "application/json"
         ],
-        "description": "Returns normalized Airbnb public web search results.",
+        "description": "Searches public Airbnb stays for a location, with optional check-in and check-out dates, adult count, currency and page. Pass `ne_lat`, `ne_lng`, `sw_lat` and `sw_lng` to bound the search to a map area. Each result has the listing id, title, URL, location and coordinates, price and price per night, rating, review count, host, and the Superhost and Guest Favorite flags.",
         "operationId": "airbnb-search",
         "parameters": [
           {

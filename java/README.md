@@ -8,7 +8,7 @@ The official Java client for Crawlora's hosted Airbnb API. It exposes 7 endpoint
 <dependency>
   <groupId>net.crawlora</groupId>
   <artifactId>crawlora-airbnb</artifactId>
-  <version>0.1.1</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
